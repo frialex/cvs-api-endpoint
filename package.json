@@ -1,0 +1,19 @@
+{
+  "name": "cvs-api-endpoint",
+  "version": "1.0.0",
+  "description": "take home test",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frialex/cvs-api-endpoint.git"
+  },
+  "author": "Frison Alexander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frialex/cvs-api-endpoint/issues"
+  },
+  "homepage": "https://github.com/frialex/cvs-api-endpoint#readme"
+}
