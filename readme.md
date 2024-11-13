@@ -1,6 +1,8 @@
 # Directions
 
-### 1) open powershell and run
+### 1) Set Token environment variable
+
+open powershell and run
 
 ```$env:TMDB_API_KEY = "YOUR API KEY HERE"```
 
