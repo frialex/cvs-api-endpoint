@@ -6,11 +6,11 @@ export default async function(year: string, page: string): Promise<Movie[]> {
 
     try {
         const TMDB_API_KEY = process.env.TMDB_API_KEY;
-        
-        const res = await fetch(`${MOVIE_API_URL}&primary_release_year=${year}&page=${page}&api_key=${TMDB_API_KEY}`)
+        const URL =  `${MOVIE_API_URL}&primary_release_year=${year}&page=${page}&api_key=${TMDB_API_KEY}`;
+        const res = await fetch(URL)
         const data = await res.json();
 
-        const response = await Promise.all( data.results.map( async (m: any) => {
+        const response = await Promise.all( data.results.map( async (m: Movie) => {
             return {
                 title: m.title,
                 release_date: m.release_date,
@@ -30,11 +30,11 @@ export default async function(year: string, page: string): Promise<Movie[]> {
 async function getEditors(movieId: number){ 
     try{
         const TMDB_API_KEY = process.env.TMDB_API_KEY;
-        const r1 = await fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`)
-        const r2 = await r1.json();
+        const URL = `${BASE_URL}/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`;
+        const res = await (await fetch(URL)).json();
 
-        const editors = r2.crew.filter((c: Crew) => c.known_for_department === 'Editing')
-                               .map((e: Crew) => e.name)
+        const editors = res.crew.filter((c: Crew) => c.known_for_department === 'Editing')
+                                .map((e: Crew) => e.name)
         return editors;
 
     } catch(error){
@@ -43,6 +43,7 @@ async function getEditors(movieId: number){
 }
 
 type Movie =  {
+    id: number;
     title: string;
     release_date: string;
     vote_average: number;
