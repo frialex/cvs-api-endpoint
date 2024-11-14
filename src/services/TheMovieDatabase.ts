@@ -42,6 +42,7 @@ async function getEditors(movieId: number){
 
     } catch(error){
         console.log(error);
+        return [];
     }
 }
 
