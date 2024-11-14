@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsx src/index.ts",
+    "debug": "tsx --inspect-brk src/index.ts",
     "test": "jest"
   },
   "repository": {
