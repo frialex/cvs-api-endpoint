@@ -12,6 +12,11 @@ export default async function(req: Request, res: Response){
     if(!page) page = "1"
 
 
-    const data = await tmdb_api(year as string, page as string); 
-    res.status(200).json(data) 
+    try{
+
+        const data = await tmdb_api(year as string, page as string); 
+        res.status(200).json(data) 
+    }catch(error: any){
+        res.status(500).json({ error: error.message })
+    }
 }
