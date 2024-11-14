@@ -2,9 +2,7 @@
 
 ### 1) Set Token environment variable
 
-open powershell and run
-
-```$env:TMDB_API_KEY = "YOUR API KEY HERE"```
+rename ```.env-example``` to just ```.env``` and fill out the API key
 
 ### 2) run the application
 
