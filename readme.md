@@ -15,4 +15,4 @@ rename ```.env-example``` to just ```.env``` and fill out the API key
 ### 3) make api request
 
 example: 
-```http://localhost:3000/movie?year=2011```
+```http://localhost:3000/movie?year=2019&page=2```

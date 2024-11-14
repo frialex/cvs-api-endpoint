@@ -1,4 +1,5 @@
 import movie_api from './movie';
+import tmdb_api from '../services/TheMovieDatabase';
 import { getMockReq, getMockRes } from '@jest-mock/express';
 
 
@@ -13,9 +14,21 @@ jest.mock('../services/TheMovieDatabase', () => ({
 }))
 
 
-describe('the movie api endpoint', () => {
+describe('the movie api express endpoint', () => {
 
-    it('should mock tmdb api', async () => {
+    it('should return json', async () => {
+       const req = getMockReq({
+            METHOD: 'GET',
+            url: '/movie',
+            query: { year: '2020', page: '2' }
+       }) 
+       const { res } = getMockRes();
+
+       await movie_api(req, res);
+       expect(res.json).toHaveBeenCalled();
+    })
+
+    it('should use default page of 1', async () => {
        const req = getMockReq({
             METHOD: 'GET',
             url: '/movie',
@@ -24,8 +37,9 @@ describe('the movie api endpoint', () => {
        const { res } = getMockRes();
 
        await movie_api(req, res);
-       expect(res.json).toHaveBeenCalled();
-       console.log(res.statusCode)
+
+       expect(tmdb_api).toHaveBeenLastCalledWith("2020", "1");
+
     })
 
 

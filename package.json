@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "debug": "tsx --inspect-brk src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
   },
   "repository": {
     "type": "git",

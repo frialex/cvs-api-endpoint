@@ -25,7 +25,7 @@ describe('The Movie Database API call', () => {
         fetchMock.once(JSON.stringify({ results: [mockResponse]}))
                  .once(JSON.stringify({ crew: [{ known_for_department: 'Editing', name: 'Bob' } ] }));
 
-        const res = await tmdb_api("2020");
+        const res = await tmdb_api("2020", "2");
         expect(res).toEqual([
             {
                 "title": "Sonic the Hedgehog",
@@ -42,7 +42,7 @@ describe('The Movie Database API call', () => {
         fetchMock.mockAbort();
 
         try{
-            const res = await tmdb_api("2020");
+            const res = await tmdb_api("2020", "1");
         }catch(error: any){
             expect(error.message).toBe("Service error: failed to call TMDB API")
         }
@@ -62,7 +62,7 @@ describe('The Movie Database API call', () => {
         fetchMock.once(JSON.stringify({ results: [mockResponse]}))
                 .mockAbortOnce();
 
-        const res = await tmdb_api("2020");
+        const res = await tmdb_api("2020", "1");
         expect(res).toEqual([
             {
                 "title": "Sonic the Hedgehog",
